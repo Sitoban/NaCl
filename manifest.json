@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "NaCl",
+  "description": "Native Client For Retail Web API",
+  "version": "1.0",
+  "icons": {
+    "19": "logo1.png",
+    "38": "logo1.png",
+    "64": "logo1.png",
+    "128": "logo1.png"
+  },
+  /*
+  "browser_action": {
+    "default_icon": "icon19.png",
+    "default_popup": "popup.html",
+    "default_title": "Native Retail APi Client"
+  },
+  
+  "app": {
+    "launch": {
+      "local_path": "index.html",
+      "container" : "panel"
+      "height" : "900px",
+      "width" : "600px"
+    }
+  },*/
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": [
+    //"tabs",
+    "storage",
+    "http://*/"
+  ]
+}
