@@ -240,7 +240,6 @@ function getHistoryElement(id, url, method) {
   return element = '<li id="' + id + '"style="margin: 3px;" class="sidebar-history-request"> <div id="' + id + '" class="request" data-request-id="b9d954a3-232b-f5c3-f576-005045e879c6"><pre id="' + id + '" style="margin-left: 5px;" class="request-name">' + method + ' : ' + url + '</pre></div></li>';
 }
 
- // checking GIT 
 function activateNormalTab() {
   getElement("normal").setAttribute("class", "active");
   getElement("basicAuth").setAttribute("class", "");
