@@ -38,13 +38,13 @@ function initialize() {
 }
 function appendCodeMirrorInTest() {
 
-  var testRequestPanel = getElement("request-test-panel");
+  var testRequestPanel = getElement("request-helper-test");
   this.codeMirrorTestRequestPanel = CodeMirror(testRequestPanel, {
     lineNumbers: true,
     value: 'tests["Content-Type is present"] = responseHeaders.hasOwnProperty("Content-Type");\ntests["Status code is 200"] = responseCode.code === 200;',
     mode: "javascript"
   });
- 
+  hide("request-helper-test");
 }
 
 function appendCodeMirrorInRequestBody() {
@@ -75,10 +75,7 @@ function onMethodChange() {
 
   if (method == 'PUT' || method == 'POST') {
     show("request-body");
-    var requestBody = getElement("request-body")
-   // var myCodeMirror = CodeMirror.fromTextArea(requestBody);
-    
-    
+    var requestBody = getElement("request-body");
   }
   else {
     hide("request-body");
@@ -262,6 +259,7 @@ function activateTestTab() {
   hide("request-helper-basicAuth");
   show("request-helpers");
   show("request-helper-test");
+  codeMirrorTestRequestPanel.refresh();
 }
 function sendRequest() {
   /*
