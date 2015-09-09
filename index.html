@@ -1,164 +1,166 @@
 <html>
-    
-    <head>
-        <title>Retail APi Client</title>
-        <link rel="stylesheet" href="/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-modal.css">
-        <link rel="stylesheet" type="text/css" href="css/codemirror.css">
-        <link rel="stylesheet" type="text/css" href="css/trash.css">
-        <script src="/js/view.js"></script>
-        <script src="/js/controller.js"></script>
-        <script src="/js/model.js"></script>
-        <script src="/js/store.js"></script>
-        <script src="/js/codemirror.js"></script>
-        <script src="/js/javascript.js"></script>
-    </head>
-    
-    <body>
-        <div id="sidebar-toggle">
-    <img src="img/tri_arrow_left.png">
-</div>
-        <div id="sidebar" style="overflow-y: auto; padding: 0px; width: 350px;">
-            <!---->
-            <div id="logo" style="opacity: 1;margin: 10px;">
-                <img src="img/logo-grey.png" alt="Postman" height="15px" width="100px">
-            </div>
-            <div id="history-options" class="section-options" style="opacity: 1;">
-                <button id="history-actions-delete" style="width:24px; height:24px; vertical-align: middle;margin-top: 10px;" class="trash custom-appearance mouse-clicked"
-                title="Remove from Chrome..." column-type="trash" tabindex="0">
-                    <span class="lid"></span>
-                    <span class="can"></span>
-                </button>
-            </div>
-            <div id="sidebar-section-data">
-                <div class="tab-pane active" id="sidebar-section-history">
-                    <ul id="history-items" class="clearfix"></ul>
-                </div>
-                <div class="tab-pane active" id="sidebar-section-collections">
-                    <ul id="collection-items" class="clearfix"></ul>
-                </div>
-            </div>
-            <!---->
+
+<head>
+    <title>Retail APi Client</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-modal.css">
+    <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="css/trash.css">
+    <script src="/js/codemirror.js"></script>
+    <script src="/js/javascript.js"></script>
+    <script src="/js/view.js"></script>
+    <script src="/js/controller.js"></script>
+    <script src="/js/model.js"></script>
+    <script src="/js/store.js"></script>
+
+
+</head>
+
+<body>
+    <div id="sidebar-toggle">
+        <img src="img/tri_arrow_left.png">
+    </div>
+    <div id="sidebar" style="overflow-y: auto; padding: 0px; width: 350px;">
+        <!---->
+        <div id="logo" style="opacity: 1;margin: 10px;">
+            <img src="img/logo-grey.png" alt="Postman" height="15px" width="100px">
         </div>
-        <div id="main" class="content">
-            <section id="request">
-                <div id="request-builder" style="display: block;">
-                    <div id="request-types" class="clearfix">
-                        <ul class="request-helper-tabs">
-                            <li class="active" id="normal">Normal</li>
-                            <li id="basicAuth">Authentication Status :
-                                <span id="authentication-status">Forbidden</span>
-                            </li>
-                            <li id="tests"> Tests </li>
-                            <!--<li data-id="digestAuth">Digest Auth</li>
+        <div id="history-options" class="section-options" style="opacity: 1;">
+            <button id="history-actions-delete" style="width:24px; height:24px; vertical-align: middle;margin-top: 10px;" class="trash custom-appearance mouse-clicked"
+            title="Remove from Chrome..." column-type="trash" tabindex="0">
+                <span class="lid"></span>
+                <span class="can"></span>
+            </button>
+        </div>
+        <div id="sidebar-section-data">
+            <div class="tab-pane active" id="sidebar-section-history">
+                <ul id="history-items" class="clearfix"></ul>
+            </div>
+            <div class="tab-pane active" id="sidebar-section-collections">
+                <ul id="collection-items" class="clearfix"></ul>
+            </div>
+        </div>
+        <!---->
+    </div>
+    <div id="main" class="content">
+        <section id="request">
+            <div id="request-builder" style="display: block;">
+                <div id="request-types" class="clearfix">
+                    <ul class="request-helper-tabs">
+                        <li class="active" id="normal">Normal</li>
+                        <li id="basicAuth">Authentication Status :
+                            <span id="authentication-status">Forbidden</span>
+                        </li>
+                        <li id="tests"> Tests </li>
+                        <!--<li data-id="digestAuth">Digest Auth</li>
                 <li data-id="oAuth1">OAuth 1.0</li>-->
-                        </ul>
-                    </div>
-                    <div id="request-helpers" class="clearfix">
-                        <div id="request-helper-normal" class="request-helpers" style="display: none;"></div>
-                        <div id="request-helper-test" class="request-helpers" style="display: none;" >  
-                            <div id="request-test-panel"></div> 
-                        </div>
-                        <div id="request-helper-basicAuth" class="request-helpers" style="display: none;">
-                            <div class="request-helper-form-container">
-                                <form class="form form-horizontal">
-                                    <div class="control-group">
-                                        <label class="control-label">Username</label>
-                                        <div class="controls" id="username-holder">
-                                            <input type="text" id="request-helper-basicAuth-username" class="clean-input">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Password</label>
-                                        <div class="controls" id="password-holder">
-                                            <input type="password" id="request-helper-basicAuth-password" class="clean-input">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <div class="controls">
-                                            <a class="btn btn-secondary request-helper-submit" id="request-authenticate-submit" data-type="basic">Authenticate</a>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="request-helper-form-description">
-                                <h4>Note</h4>The authorization will generate a session for your every request.</div>
-                        </div>
-                    </div>
-                    
-                        
-                    
-                    <div id="request-url" class="clearfix">
-                        <div id="request-url-wrapper">
-                            <div id="request-url-container">
-                                <input type="text" name="url" id="url" tabindex="1" class="input-text-light ui-autocomplete-input" placeholder="Enter request URL here"
-                                autocomplete="off">
-                            </div>
-                        </div>
-                        <div id="request-modifiers">
-                            <div id="request-method-container">
-                                <select id="request-method-selector">
-                                    <option value="GET" selected="">GET</option>
-                                    <option value="POST">POST</option>
-                                    <option value="PUT">PUT</option>
-                                    <option value="PATCH">PATCH</option>
-                                    <option value="DELETE">DELETE</option>
-                                    <option value="COPY">COPY</option>
-                                    <option value="HEAD">HEAD</option>
-                                    <option value="OPTIONS">OPTIONS</option>
-                                    <option value="LINK">LINK</option>
-                                    <option value="UNLINK">UNLINK</option>
-                                    <option value="PURGE">PURGE</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!--<div class="clearfix"></div>-->
-                    </div>
-                    <div id="request-body" ></div>
-                    <button class="btn btn-primary" data-loading-text="Fetching data..." type="button" data-complete-text="Send request" id="submit-request"
-                    tabindex="5">Send</button>
+                    </ul>
                 </div>
-            </section>
-            <section id="response">
-                <div id="response-waiting-container" style="display: none;">
-                    <h3>Loading...</h3>
-                    <button id="cancel-request" class="btn">Cancel request</button>
-                </div>
-                <div id="response-success-container" style="display: none;">
-                    <div id="response-top-bar">
-                        <ul class="response-tabs ">
-                            <li class="active" data-section="body">Body</li>
-                        </ul>
+                <div id="request-helpers" class="clearfix">
+                    <div id="request-helper-normal" class="request-helpers" style="display: none;"></div>
+                    <div id="request-helper-test" class="request-helpers" style="display: none;" >
+                        <div id="request-test-panel"></div>
                     </div>
-                    <div id="response-data" style="" class="clearfix">
-                        <div id="response-data-options" class="clearfix">
-                            <div id="response-formatting" class="btn-group clearfix" data-toggle="buttons-radio" style="display: block;">
-                                <a data-type="parsed" class="btn">Pretty</a>
-                                <a data-type="raw" class="btn">Raw</a>
-                                <a data-type="preview" class="btn active">Preview</a>
-                            </div>
-                            <div id="response-actions" class="clearfix" style="display: block;">
-                                <a class="btn" rel="tooltip" data-placement="bottom" data-original-title="Toggle size" id="response-body-toggle">
-                            <img src="img/full-screen-alt-4.png" style="width:16px; height:16px; vertical-align: middle;">
-                        </a>
-                            </div>
-                            <div id="response-pretty-modifiers" class="clearfix" style="display: none;">
-                                <a class="btn active" rel="tooltip" data-placement="bottom" data-original-title="Toggle wrapping" id="response-body-line-wrapping">
-                            <img src="img/right_indent.png" style="width:16px; height:16px; vertical-align: middle;">
-                        </a>
-                                <div id="response-language" class="btn-group clearfix" data-toggle="buttons-radio" style="display: block;">
-                                    <a data-mode="javascript" class="btn active">JSON</a>
-                                    <a data-mode="html" class="btn">XML</a>
+                    <div id="request-helper-basicAuth" class="request-helpers" style="display: none;">
+                        <div class="request-helper-form-container">
+                            <form class="form form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label">Username</label>
+                                    <div class="controls" id="username-holder">
+                                        <input type="text" id="request-helper-basicAuth-username" class="clean-input">
+                                    </div>
                                 </div>
+                                <div class="control-group">
+                                    <label class="control-label">Password</label>
+                                    <div class="controls" id="password-holder">
+                                        <input type="password" id="request-helper-basicAuth-password" class="clean-input">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <a class="btn btn-secondary request-helper-submit" id="request-authenticate-submit" data-type="basic">Authenticate</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="request-helper-form-description">
+                            <h4>Note</h4>The authorization will generate a session for your every request.</div>
+                    </div>
+                </div>
+
+
+
+                <div id="request-url" class="clearfix">
+                    <div id="request-url-wrapper">
+                        <div id="request-url-container">
+                            <input type="text" name="url" id="url" tabindex="1" class="input-text-light ui-autocomplete-input" placeholder="Enter request URL here"
+                            autocomplete="off">
+                        </div>
+                    </div>
+                    <div id="request-modifiers">
+                        <div id="request-method-container">
+                            <select id="request-method-selector">
+                                <option value="GET" selected="">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="PATCH">PATCH</option>
+                                <option value="DELETE">DELETE</option>
+                                <option value="COPY">COPY</option>
+                                <option value="HEAD">HEAD</option>
+                                <option value="OPTIONS">OPTIONS</option>
+                                <option value="LINK">LINK</option>
+                                <option value="UNLINK">UNLINK</option>
+                                <option value="PURGE">PURGE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="clearfix"></div>-->
+                </div>
+                <div id="request-body" ></div>
+                <button class="btn btn-primary" data-loading-text="Fetching data..." type="button" data-complete-text="Send request" id="submit-request"
+                tabindex="5">Send</button>
+            </div>
+        </section>
+        <section id="response">
+            <div id="response-waiting-container" style="display: none;">
+                <h3>Loading...</h3>
+                <button id="cancel-request" class="btn">Cancel request</button>
+            </div>
+            <div id="response-success-container" style="display: none;">
+                <div id="response-top-bar">
+                    <ul class="response-tabs ">
+                        <li class="active" data-section="body">Body</li>
+                    </ul>
+                </div>
+                <div id="response-data" style="" class="clearfix">
+                    <div id="response-data-options" class="clearfix">
+                        <div id="response-formatting" class="btn-group clearfix" data-toggle="buttons-radio" style="display: block;">
+                            <a data-type="parsed" class="btn">Pretty</a>
+                            <a data-type="raw" class="btn">Raw</a>
+                            <a data-type="preview" class="btn active">Preview</a>
+                        </div>
+                        <div id="response-actions" class="clearfix" style="display: block;">
+                            <a class="btn" rel="tooltip" data-placement="bottom" data-original-title="Toggle size" id="response-body-toggle">
+                                <img src="img/full-screen-alt-4.png" style="width:16px; height:16px; vertical-align: middle;">
+                            </a>
+                        </div>
+                        <div id="response-pretty-modifiers" class="clearfix" style="display: none;">
+                            <a class="btn active" rel="tooltip" data-placement="bottom" data-original-title="Toggle wrapping" id="response-body-line-wrapping">
+                                <img src="img/right_indent.png" style="width:16px; height:16px; vertical-align: middle;">
+                            </a>
+                            <div id="response-language" class="btn-group clearfix" data-toggle="buttons-radio" style="display: block;">
+                                <a data-mode="javascript" class="btn active">JSON</a>
+                                <a data-mode="html" class="btn">XML</a>
                             </div>
-                            <div id="response-collection-request-actions" class="clearfix" style="display: none;">
-                                <span id="response-sample-save-start-container">
+                        </div>
+                        <div id="response-collection-request-actions" class="clearfix" style="display: none;">
+                            <span id="response-sample-save-start-container">
                                     <a class="btn" rel="tooltip" data-placement="bottom" data-original-title="Save sample response" id="response-sample-save-start">
                                 <i class="icon-bookmark"></i>
                             </a>
                                 </span>
-                                <span id="response-sample-save-form">
+                            <span id="response-sample-save-form">
                                     <form class="form-inline">
                                         <input type="text" class="input-small" placeholder="Name" id="response-sample-name">
                                         <a class="btn" rel="tooltip" data-placement="bottom" data-original-title="Save" id="response-sample-save">
@@ -169,13 +171,13 @@
                                 </a>
                                     </form>
                                 </span>
-                            </div>
                         </div>
-                        <pre style="margin-top: 15;" id="response-text"></pre>
                     </div>
+                    <div id="response-text"></div>
                 </div>
-            </section>
-        </div>
-    </body>
+            </div>
+        </section>
+    </div>
+</body>
 
 </html>

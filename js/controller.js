@@ -33,6 +33,7 @@ function initialize() {
 
 
   appendCodeMirrorInTest();
+  appendCodeMirrorInResponseBody();
   appendCodeMirrorInRequestBody();
 
 }
@@ -55,6 +56,17 @@ function appendCodeMirrorInRequestBody() {
     mode: "javascript"
   });
   hide("request-body");
+}
+
+function appendCodeMirrorInResponseBody() {
+
+    var requestBody = getElement("response-text");
+  this.codeMirrorResponseBody = CodeMirror(requestBody, {
+    lineNumbers: true,
+    value: "",
+    mode: "javascript",
+    lineWrapping : true
+  });
 }
 
 function addListeners() {

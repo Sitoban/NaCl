@@ -19,11 +19,11 @@ function setElementValue(componentId, value){
 }
 
 function showResponse(responseElement, response) {
-  var responseText = getElement(responseElement);
-  responseText.innerText = response;
   hide("response-waiting-container");
   show("response");
   show("response-success-container");
+  codeMirrorResponseBody.setValue(response);
+  codeMirrorResponseBody.refresh();
 }
 
 function getStatus(status) {
