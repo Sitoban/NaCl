@@ -14,7 +14,6 @@ function initialize() {
 
   var apiRequest;
   chrome.storage.local.get(function (obj) {
-    //console.log(obj);
     chrome.storage.local.get(function (cfg) {
       if (typeof (cfg["APIRequest"]) !== 'undefined') {
 
@@ -27,8 +26,6 @@ function initialize() {
       }
       chrome.storage.local.set(cfg);
     });
-    //var url = obj.request.url;
-    //setElementValue("url",url);
   });
 
 
@@ -49,7 +46,7 @@ function appendCodeMirrorInTest() {
 }
 
 function appendCodeMirrorInRequestBody() {
-  var requestBody = getElement("request-body");//request-body getElement("request-body")
+  var requestBody = getElement("request-body");
   this.codeMirrorRequestBody = CodeMirror(requestBody, {
     lineNumbers: true,
     value: "",
@@ -92,7 +89,6 @@ function onMethodChange() {
   else {
     hide("request-body");
   }
-
 }
 
 
@@ -228,12 +224,21 @@ function setRecordById(id) {
         if (record.id == id) {
           setElementValue("url", record.url);
           setElementValue("request-method-selector", record.method);
+          setRequestBody(record.requestBody);
         }
       })
     }
   });
 }
 
+function setRequestBody(requestBody)
+{
+  onMethodChange();
+  if(requestBody!== 'undefined')
+  {
+     codeMirrorRequestBody.setValue(requestBody);
+  }
+}
 
 function prepareHistory(records) {
   var historyElements = "";
@@ -286,7 +291,7 @@ function sendRequest() {
   var username = getElementValue("request-helper-basicAuth-username");
   var password = getElementValue("request-helper-basicAuth-password");
   var requestBody = codeMirrorRequestBody.getValue();
-  var apiRequest = new APIRequest(url, method, username, password);
+  var apiRequest = new APIRequest(url, method, username, password, requestBody);
 
   if (url != "") {
     var request = new XMLHttpRequest();
