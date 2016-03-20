@@ -324,6 +324,8 @@ function onReady(request) {
   if (this.readyState == this.DONE) {
     var responseSting = JSON.stringify(JSON.parse(this.responseText), undefined, 2);
     responseText = responseSting;
+    
+    testResponse(codeMirrorTestRequestPanel.getValue(),request);
   }
   else {
 

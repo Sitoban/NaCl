@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "NaCl",
   "description": "Native Client For Retail Web API",
-  "version": "1.0",
+  "version": "2.0",
   "icons": {
     "19": "logo1.png",
     "38": "logo1.png",
